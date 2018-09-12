@@ -54,6 +54,7 @@ class Zombie
     end
   end
 
+
 #class methods
   def self.all
     return @@horde

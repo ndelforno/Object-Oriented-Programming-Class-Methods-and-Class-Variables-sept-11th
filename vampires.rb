@@ -21,11 +21,11 @@ class Vampire
 
   #writers
 
-  def in_coffin (coffin)
+  def in_coffin= (coffin)
     return @in_coffin = coffin
   end
 
-  def drank_blood_today (drank)
+  def drank_blood_today= (drank)
     return @drank_blood_today = drank
   end
 
@@ -33,13 +33,18 @@ class Vampire
     @drank_blood_today = true
   end
 
-  def sunrise(vampire)
-    if vampire.in_coffin && vampire.drank_blood_today
-      @@coven.delete(vampire)
+  def go_home
+    @in_coffin = true
+  end
+#class methods
+  def self.sunrise
+    @@coven.delete_if do |vamp|
+      if vamp.in_coffin == false || vamp.drank_blood_today == false
+        true
+      end
     end
   end
 
-  #class methods
 
   def self.create(name,age)
     new_vampire = Vampire.new(name,age)
@@ -49,9 +54,13 @@ class Vampire
 
   def self.sunset
     @@coven.each do |vamp|
-    vamp.in_coffin(vamp) = false
-    vamp.drank_blood_today(vamp) = false
+    vamp.in_coffin = false
+    vamp.drank_blood_today = false
     end
+  end
+
+  def self.available
+    return @@coven
   end
 
 end
@@ -66,3 +75,18 @@ puts "------------"
 Vampire.sunset
 p vampire1
 vampire1.drink_blood
+p vampire1
+vampire1.go_home
+p vampire1
+
+puts "------------"
+p vampire2
+vampire2.go_home
+#vampire2.drink_blood
+p vampire2
+
+puts Vampire.available.inspect
+#vampire3.go_home
+puts "------------"
+Vampire.sunrise
+puts Vampire.available.inspect
