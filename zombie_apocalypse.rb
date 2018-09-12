@@ -18,7 +18,8 @@ class Zombie
       @zombie_strength = @@default_strength
     end
   end
-#readers
+
+# readers
   def zombie_speed
     return @zombie_speed
   end
@@ -26,7 +27,8 @@ class Zombie
   def zombie_strength
     return @zombie_strength
   end
-#instance methods
+
+# instance methods
   def encounter(zombie)
     if zombie.outrun_zombie?(zombie)
       puts "You escaped!"
@@ -39,7 +41,7 @@ class Zombie
   end
 
   def outrun_zombie?(zombie)
-    if rand(@@max_speed+1) > zombie.zombie_speed
+    if rand(@@max_speed + 1) > zombie.zombie_speed
       return true
     else
       return false
@@ -47,15 +49,14 @@ class Zombie
   end
 
   def survive_attack?(zombie)
-    if rand(@@max_strength+1) > zombie.zombie_strength
+    if rand(@@max_strength + 1) > zombie.zombie_strength
       return true
     else
       return false
     end
   end
 
-
-#class methods
+# class methods
   def self.all
     return @@horde
   end

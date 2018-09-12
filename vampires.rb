@@ -1,8 +1,8 @@
 class Vampire
-  #class variables
-    @@coven = []
+# class variables
+@@coven = []
 
-  #instance methods
+  # instance methods
   def initialize(name,age)
     @name = name
     @age = age
@@ -10,7 +10,7 @@ class Vampire
     @drank_blood_today = false
   end
 
-  #readers
+  # readers
   def in_coffin
     return @in_coffin
   end
@@ -19,7 +19,7 @@ class Vampire
     return @drank_blood_today
   end
 
-  #writers
+  # writers
 
   def in_coffin= (coffin)
     return @in_coffin = coffin
@@ -36,7 +36,8 @@ class Vampire
   def go_home
     @in_coffin = true
   end
-#class methods
+
+  # class methods
   def self.sunrise
     @@coven.delete_if do |vamp|
       if vamp.in_coffin == false || vamp.drank_blood_today == false
@@ -44,7 +45,6 @@ class Vampire
       end
     end
   end
-
 
   def self.create(name,age)
     new_vampire = Vampire.new(name,age)

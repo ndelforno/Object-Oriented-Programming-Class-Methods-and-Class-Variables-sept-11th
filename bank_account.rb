@@ -1,20 +1,20 @@
 class BankAccount
-  #class variable
-    @@interest_rate = 0.05
-    @@accounts =[]
+  # class variable
+@@interest_rate = 0.05
+@@accounts=[]
 
-  #instance methods
+  # instance methods
   def initialize
     @balance = 0
   end
 
-  #reader methods
+  # reader methods
 
   def balance
     return @balance
   end
 
-  #writer methods
+  # writer methods
   def balance=(ammount)
     return @balance += ammount
   end
@@ -27,9 +27,9 @@ class BankAccount
     @balance = @balance - ammount
   end
 
-  #class methods
+  # class methods
   def self.create
-    account= BankAccount.new
+    account = BankAccount.new
     @@accounts << account
     return account
   end
@@ -44,7 +44,7 @@ class BankAccount
 
   def self.interest_time
     @@accounts.each do |num|
-      num.balance=(num.balance * @@interest_rate)
+      num.balance = (num.balance * @@interest_rate)
     end
   end
 
@@ -53,26 +53,26 @@ end
 account1 = BankAccount.create
 account2 = BankAccount.create
 p account1
-puts"-------------"
+puts "-------------"
 p account2
 
-puts"-------------"
+puts "-------------"
 puts account1.balance
-puts"-------------"
+puts "-------------"
 puts BankAccount.total_funds
-puts"-------------"
+puts "-------------"
 account1.deposit(200)
 account2.deposit(1000)
 puts account1.balance
 puts account2.balance
-puts"-------------"
+puts "-------------"
 puts BankAccount.total_funds
-puts"-------------"
+puts "-------------"
 BankAccount.interest_time
 puts account1.balance
 puts account2.balance
 puts BankAccount.total_funds
-puts"-------------"
+puts "-------------"
 account1.withdraw(50)
 puts account1.balance
 puts BankAccount.total_funds

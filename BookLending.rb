@@ -1,9 +1,9 @@
 class Book
 
-  @@on_shelf =[]
-  @@on_loan =[]
+  @@on_shelf = []
+  @@on_loan = []
 
-#reader methods
+  # reader methods
   def due_date
     return @due_date
   end
@@ -16,7 +16,7 @@ class Book
     return @@on_shelf
   end
 
-#writers methods
+  # writers methods
   def due_date=(date)
     @due_date = date
   end
@@ -58,7 +58,6 @@ class Book
       return @due_date = Time.now + 3600
   end
 
-
   def borrow(book)
     if book.lent_out?(book) == true
       puts "Book unvailable"
@@ -82,7 +81,7 @@ class Book
   end
 
   def self.overdue
-    overdue_books =[]
+    overdue_books = []
     @@on_loan.each do |book|
       if book.due_date < Time.now
       overdue_books << book
